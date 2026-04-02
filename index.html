@@ -115,7 +115,7 @@ BOOK NOW
  </h1>
       <p class="text-gray-300 text-xl mb-8 max-w-2xl mx-auto">Professional body repairs, detailing and alloy refurbishment in London</p>
              <div class="flex flex-col sm:flex-row gap-4 justify-center">
-  <button class="bg-[#d4f500] text-black px-8 py-4 font-bold text-lg rounded-lg hover:bg-yellow-300 transition-colors">
+  <button onclick="document.getElementById('booking-modal').classList.remove('hidden')" class="bg-[#d4f500] text-black px-8 py-4 font-bold text-lg rounded-lg hover:bg-yellow-300 transition-colors">
    BOOK A JOB
           </button>
          <a href="#services" class="border-2 border-white text-white px-8 py-4 font-bold text-lg rounded-lg hover:bg-white hover:text-black transition-colors inline-block">
@@ -328,7 +328,7 @@ BOOK NOW
     </section>
 
     <!-- Visit Our Workshop -->
-    <section id="contact" style="position:relative;height:500px;overflow:hidden;">
+    <section id="contact" style="position:relative;height:500px;overflow:hidden;margin-top:5rem;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.5!2d-0.2283!3d51.5559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDMzJzIxLjIiTiAwwrAxMyc0MS44Ilc!5e0!3m2!1sen!2suk!4v1!5m2!1sen!2suk" style="width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
         <div style="position:absolute;top:50%;left:2rem;transform:translateY(-50%);background:white;border-radius:16px;padding:2rem;max-width:320px;box-shadow:0 25px 50px rgba(0,0,0,0.4);">
             <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#111;margin-bottom:1.2rem;">Visit Our Workshop</h3>
@@ -354,11 +354,11 @@ BOOK NOW
     <section style="background:#d4f500;padding:5rem 1rem;text-align:center;">
         <h2 class="font-bebas" style="font-size:clamp(2.5rem,6vw,5rem);color:#000;margin-bottom:1rem;">READY TO GET YOUR CAR SORTED?</h2>
         <p style="color:#333;font-size:1.1rem;margin-bottom:2rem;">Book in today — free quotes, fast turnaround.</p>
-        <a href="#contact" style="background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;padding:1rem 3rem;text-decoration:none;display:inline-block;border-radius:4px;">BOOK NOW</a>
+        <button onclick="document.getElementById('booking-modal').classList.remove('hidden')" style="background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;padding:1rem 3rem;border:none;cursor:pointer;border-radius:4px;">BOOK NOW</button>
     </section>
 
     <!-- Footer -->
-    <footer style="background:#080808;border-top:1px solid rgba(212,245,0,0.1);padding:4rem 1rem;">
+    <footer style="background:rgba(8,8,8,0.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(212,245,0,0.15);padding:4rem 1rem;">
         <div class="max-w-7xl mx-auto" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3rem;">
             <div>
                 <p class="font-bebas" style="font-size:1.8rem;color:white;line-height:1;">REECO'S</p>
@@ -390,7 +390,81 @@ BOOK NOW
         </div>
     </footer>
 
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="hidden fixed inset-0 z-[999] flex items-center justify-center p-4" style="background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);">
+        <div style="background:#111;border:1px solid rgba(212,245,0,0.2);border-radius:16px;padding:2.5rem;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;position:relative;">
+            <button onclick="document.getElementById('booking-modal').classList.add('hidden')" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#9ca3af;cursor:pointer;font-size:1.5rem;"><i class="ph-bold ph-x"></i></button>
+            <p style="font-family:'Bebas Neue',sans-serif;color:#d4f500;letter-spacing:3px;font-size:0.9rem;margin-bottom:0.5rem;">REECO'S BODY SHOP</p>
+            <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:white;margin-bottom:0.5rem;">BOOK A JOB</h2>
+            <p style="color:#9ca3af;font-size:0.875rem;margin-bottom:2rem;">Fill in your details and we'll get back to you to confirm.</p>
+            <form onsubmit="handleBooking(event)" style="display:flex;flex-direction:column;gap:1.25rem;">
+                <div>
+                    <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">SERVICE</label>
+                    <select name="service" required style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;">
+                        <option value="" disabled selected>Select a service...</option>
+                        <option>Vehicle Repair</option>
+                        <option>Auto Detailing</option>
+                        <option>Engine Diagnostics</option>
+                        <option>Battery Service</option>
+                        <option>Spray Painting</option>
+                        <option>Transmission</option>
+                        <option>Brakes</option>
+                        <option>Alloy Wheel Refurbishment</option>
+                        <option>Oil Change</option>
+                        <option>General Servicing</option>
+                    </select>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div>
+                        <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">FIRST NAME</label>
+                        <input type="text" name="name" required placeholder="e.g. James" style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;box-sizing:border-box;">
+                    </div>
+                    <div>
+                        <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">LAST NAME</label>
+                        <input type="text" name="lastname" required placeholder="e.g. Smith" style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;box-sizing:border-box;">
+                    </div>
+                </div>
+                <div>
+                    <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">EMAIL</label>
+                    <input type="email" name="email" required placeholder="james@email.com" style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;box-sizing:border-box;">
+                </div>
+                <div>
+                    <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">PHONE NUMBER</label>
+                    <input type="tel" name="phone" required placeholder="07xxx xxxxxx" style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;box-sizing:border-box;">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div>
+                        <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">PREFERRED DATE</label>
+                        <input type="date" name="date" required style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;box-sizing:border-box;">
+                    </div>
+                    <div>
+                        <label style="color:#d4f500;font-size:0.8rem;font-weight:600;letter-spacing:1px;display:block;margin-bottom:0.4rem;">PREFERRED TIME</label>
+                        <select name="time" required style="width:100%;background:#1a1a1a;border:1px solid rgba(212,245,0,0.2);color:white;padding:0.75rem 1rem;border-radius:8px;font-size:0.95rem;outline:none;">
+                            <option value="" disabled selected>Select time...</option>
+                            <option>08:00 – 09:00</option>
+                            <option>09:00 – 10:00</option>
+                            <option>10:00 – 11:00</option>
+                            <option>11:00 – 12:00</option>
+                            <option>12:00 – 13:00</option>
+                            <option>13:00 – 14:00</option>
+                            <option>14:00 – 15:00</option>
+                            <option>15:00 – 16:00</option>
+                            <option>16:00 – 17:00</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" style="background:#d4f500;color:#000;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;padding:1rem;border:none;border-radius:8px;cursor:pointer;width:100%;margin-top:0.5rem;letter-spacing:1px;">SEND ENQUIRY →</button>
+                <p style="color:#6b7280;font-size:0.75rem;text-align:center;">We'll confirm your booking within 24 hours.</p>
+            </form>
+        </div>
+    </div>
+
     <script>
+        function handleBooking(e) {
+            e.preventDefault();
+            const modal = document.getElementById('booking-modal');
+            modal.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;text-align:center;padding:2rem;"><div style="font-size:3rem;margin-bottom:1rem;">✅</div><h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:2rem;color:#d4f500;margin-bottom:0.5rem;">ENQUIRY SENT!</h2><p style="color:#9ca3af;">We\'ll be in touch within 24 hours to confirm your booking.</p><button onclick="document.getElementById(\'booking-modal\').classList.add(\'hidden\')" style="margin-top:2rem;background:#d4f500;color:#000;font-family:\'Bebas Neue\',sans-serif;padding:0.75rem 2rem;border:none;border-radius:8px;cursor:pointer;font-size:1.1rem;">CLOSE</button></div>';
+        }
         // Navbar scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
