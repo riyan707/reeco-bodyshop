@@ -3,425 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reeco's Body Shop - London's Trusted Car Repair & Servicing</title>
-    <meta name="description" content="London's trusted body shop for car repairs, spray painting, detailing & alloy refurbishment. Quality work with fast turnaround and free quotes.">
+    <title>Reeco's Body Shop - London's Trusted Auto Repair & Refurbishment</title>
+    <meta name="description" content="Professional auto body repairs, detailing, and alloy refurbishment in London. 10+ years experience, 4.9 Google rating. Book your job today.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'condensed': ['Barlow Condensed', 'sans-serif'],
-                        'inter': ['Inter', 'sans-serif']
-                    },
-                    colors: {
-                        'brand-black': '#0d0d0d',
-                        'brand-red': '#e8192c',
-                        'card-dark': '#161616'
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <style>
-        html {
+        /* Custom CSS */
+        :root {
+            --neon-lime: #d4f500;
+            --deep-black: #0a0a0a;
+            --dark-gray: #111;
+            --medium-gray: #151515;
+            --light-gray: #374151;
+            --text-gray: #9ca3af;
+        }
+        
+        body {
+            background: var(--deep-black);
+            color: white;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(13, 13, 13, 0.85) 0%, rgba(13, 13, 13, 0.65) 100%);
+        
+        .bebas-neue {
+            font-family: 'Bebas Neue', cursive;
+        }
+        
+        .neon-glow {
+            text-shadow: 4px 4px 0px rgba(212, 245, 0, 0.3);
+            filter: drop-shadow(0 0 10px rgba(212, 245, 0, 0.5));
+        }
+        
+        .card-glow {
+            background: linear-gradient(135deg, #111 0%, #151515 100%);
+            border: 1px solid rgba(212, 245, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card-glow:hover {
+            border-color: rgba(212, 245, 0, 0.4);
+            transform: translateY(-4px);
+        }
+        
+        .neon-border {
+            border: 2px solid var(--neon-lime);
+            box-shadow: 0 0 20px rgba(212, 245, 0, 0.3);
+        }
+        
+        /* Navbar transitions */
+        .navbar-transparent {
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-solid {
+            background: var(--deep-black);
+            border-bottom: 1px solid rgba(212, 245, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        /* Carousel styles */
+        .carousel-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .carousel-overlay {
+            background: rgba(0, 0, 0, 0.65);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--neon-lime);
+            box-shadow: 0 0 10px var(--neon-lime);
         }
     </style>
 </head>
-<body class="bg-brand-black text-white font-inter">
-    
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-black/95 backdrop-blur-sm border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 navbar-transparent px-4 py-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="text-white">
-                        <div class="font-condensed font-800 text-2xl leading-tight">
-                            REECO'S
-                            <div class="w-full h-0.5 bg-brand-red mt-1"></div>
-                        </div>
-                        <div class="font-condensed font-700 text-lg text-brand-red -mt-1">BODY SHOP</div>
-                    </div>
+                <div class="logo">
+                    <h1 class="bebas-neue text-white text-2xl leading-none">
+                        REECO'S
+                    </h1>
+                    <p class="bebas-neue text-lg" style="color: var(--neon-lime);">
+                        BODY SHOP
+                    </p>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-white hover:text-brand-red transition-colors font-medium">Services</a>
-                    <a href="#about" class="text-white hover:text-brand-red transition-colors font-medium">About</a>
-                    <a href="#reviews" class="text-white hover:text-brand-red transition-colors font-medium">Reviews</a>
-                    <a href="#contact" class="text-white hover:text-brand-red transition-colors font-medium">Contact</a>
-                    <a href="#booking" class="bg-brand-red hover:bg-red-700 text-white px-6 py-2 rounded font-condensed font-700 transition-colors">BOOK NOW</a>
+                    <a href="#services" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">Services</a>
+                    <a href="#about" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">About</a>
+                    <a href="#reviews" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">Reviews</a>
+                    <a href="#contact" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">Contact</a>
+                    <button class="bg-yellow-400 text-black px-6 py-2 bebas-neue text-lg rounded-none hover:bg-yellow-300 transition-colors">
+                        BOOK NOW
+                    </button>
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i class="ph-bold ph-list text-2xl"></i>
                 </button>
             </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden bg-brand-black border-t border-gray-800 hidden">
-            <div class="px-4 py-4 space-y-2">
-                <a href="#services" class="block text-white hover:text-brand-red transition-colors font-medium py-2">Services</a>
-                <a href="#about" class="block text-white hover:text-brand-red transition-colors font-medium py-2">About</a>
-                <a href="#reviews" class="block text-white hover:text-brand-red transition-colors font-medium py-2">Reviews</a>
-                <a href="#contact" class="block text-white hover:text-brand-red transition-colors font-medium py-2">Contact</a>
-                <a href="#booking" class="block bg-brand-red hover:bg-red-700 text-white px-6 py-3 rounded font-condensed font-700 transition-colors text-center">BOOK NOW</a>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#services" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">Services</a>
+                    <a href="#about" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">About</a>
+                    <a href="#reviews" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">Reviews</a>
+                    <a href="#contact" class="text-white hover:text-gray-300 transition-colors bebas-neue text-lg">Contact</a>
+                    <button class="bg-yellow-400 text-black px-6 py-2 bebas-neue text-lg rounded-none hover:bg-yellow-300 transition-colors w-fit">
+                        BOOK NOW
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
-    <section class="min-h-screen relative overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1600&q=80" 
-                 alt="Professional car spray painting" 
-                 class="w-full h-full object-cover"
-                 loading="lazy">
-            <div class="absolute inset-0 hero-overlay"></div>
-        </div>
+
+    <!-- Hero Carousel -->
+    <section class="carousel-container relative">
+        <!-- Carousel Slides -->
+        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1600&q=80')"></div>
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80')"></div>
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=1600&q=80')"></div>
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1600&q=80')"></div>
+        
+        <!-- Overlay -->
+        <div class="carousel-overlay"></div>
         
         <!-- Hero Content -->
-        <div class="relative z-10 min-h-screen flex items-center">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div class="max-w-3xl">
-                    <h1 class="font-condensed font-800 text-5xl sm:text-6xl lg:text-7xl leading-tight mb-6">
-                        YOUR CAR.<br>RESTORED TO PERFECTION.
-                    </h1>
-                    <p class="text-xl text-gray-300 mb-8 max-w-2xl">
-                        London's trusted body shop for repairs, detailing & alloy refurbishment
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                        <a href="#booking" class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded font-condensed font-700 text-lg transition-colors text-center">BOOK A JOB</a>
-                        <a href="#services" class="border-2 border-white hover:bg-white hover:text-brand-black text-white px-8 py-4 rounded font-condensed font-700 text-lg transition-colors text-center">OUR SERVICES</a>
-                    </div>
+        <div class="relative z-10 h-full flex items-center justify-center text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="bebas-neue text-7xl md:text-9xl text-white mb-4 neon-glow">
+                    YOUR CAR.
+                </h1>
+                <h2 class="bebas-neue text-7xl md:text-9xl text-white mb-8 neon-glow">
+                    RESTORED.
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    London's trusted body shop for repairs, detailing & alloy refurbishment
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-yellow-400 text-black px-8 py-3 bebas-neue text-xl rounded-none hover:bg-yellow-300 transition-colors">
+                        BOOK A JOB
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-3 bebas-neue text-xl rounded-none hover:bg-white hover:text-black transition-colors">
+                        OUR SERVICES
+                    </button>
                 </div>
             </div>
         </div>
         
-        <!-- Address Badge -->
-        <div class="absolute bottom-8 left-4 sm:left-8 z-20">
-            <div class="bg-brand-black/80 backdrop-blur-sm px-4 py-3 rounded-lg border border-gray-700">
-                <div class="flex items-center gap-2 text-sm">
-                    <span class="text-xl">📍</span>
-                    <span class="text-gray-300">150 Coles Green Rd, London NW2 7JL</span>
-                </div>
-            </div>
+        <!-- Location Badge -->
+        <div class="absolute bottom-20 left-4 text-gray-400 text-sm">
+            <i class="ph-bold ph-map-pin text-yellow-400"></i>
+            150 Coles Green Rd, London NW2 7JL
+        </div>
+        
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+            <div class="dot" data-slide="3"></div>
         </div>
     </section>
-    
+
     <!-- Trust Bar -->
-    <section class="bg-gray-900 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-3xl mb-2">⭐</div>
-                    <div class="font-condensed font-800 text-xl">4.9 Google Rating</div>
+    <section class="py-4" style="background: var(--dark-gray);">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-8 text-center">
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-star text-yellow-400 text-xl"></i>
+                    <span class="text-yellow-400 font-bold">4.9</span>
+                    <span class="text-gray-400">Google Rating</span>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl mb-2">🔧</div>
-                    <div class="font-condensed font-800 text-xl">500+ Jobs Completed</div>
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-wrench text-yellow-400 text-xl"></i>
+                    <span class="text-yellow-400 font-bold">500+</span>
+                    <span class="text-gray-400">Jobs</span>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl mb-2">📅</div>
-                    <div class="font-condensed font-800 text-xl">10+ Years Experience</div>
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-calendar text-yellow-400 text-xl"></i>
+                    <span class="text-yellow-400 font-bold">10+</span>
+                    <span class="text-gray-400">Years</span>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl mb-2">✅</div>
-                    <div class="font-condensed font-800 text-xl">Fully Insured</div>
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-seal-check text-yellow-400 text-xl"></i>
+                    <span class="text-yellow-400 font-bold">Fully</span>
+                    <span class="text-gray-400">Insured</span>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Services Section -->
-    <section id="services" class="py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Background -->
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80" 
-                     alt="Car service background" 
-                     class="absolute inset-0 w-full h-full object-cover opacity-10 rounded-2xl"
-                     loading="lazy">
+
+    <!-- Services Grid -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="bebas-neue text-6xl md:text-7xl text-white text-center mb-16">
+                WHAT WE <span style="color: var(--neon-lime);">DO</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Cards -->
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-wrench text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Vehicle Repair</h3>
+                    <p class="text-gray-400">Professional bodywork repairs and restoration services for all vehicle types.</p>
+                </div>
                 
-                <div class="relative py-16">
-                    <div class="text-center mb-16">
-                        <h2 class="font-condensed font-800 text-4xl sm:text-5xl mb-4">OUR SERVICES</h2>
-                        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Professional automotive services delivered with precision and care</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Service 1 -->
-                        <div class="bg-card-dark rounded-xl p-8 border-t-4 border-brand-red hover:border-red-700 transition-colors">
-                            <div class="text-4xl mb-4">🚗</div>
-                            <h3 class="font-condensed font-800 text-2xl mb-3">Accident Repair</h3>
-                            <p class="text-gray-400">Expert collision repair to restore your vehicle to factory condition with precision workmanship.</p>
-                        </div>
-                        
-                        <!-- Service 2 -->
-                        <div class="bg-card-dark rounded-xl p-8 border-t-4 border-brand-red hover:border-red-700 transition-colors">
-                            <div class="text-4xl mb-4">🎨</div>
-                            <h3 class="font-condensed font-800 text-2xl mb-3">Spray Painting</h3>
-                            <p class="text-gray-400">Professional spray painting in our state-of-the-art booth for flawless finishes.</p>
-                        </div>
-                        
-                        <!-- Service 3 -->
-                        <div class="bg-card-dark rounded-xl p-8 border-t-4 border-brand-red hover:border-red-700 transition-colors">
-                            <div class="text-4xl mb-4">✨</div>
-                            <h3 class="font-condensed font-800 text-2xl mb-3">Auto Detailing</h3>
-                            <p class="text-gray-400">Complete interior and exterior detailing to make your car look showroom ready.</p>
-                        </div>
-                        
-                        <!-- Service 4 -->
-                        <div class="bg-card-dark rounded-xl p-8 border-t-4 border-brand-red hover:border-red-700 transition-colors">
-                            <div class="text-4xl mb-4">🔩</div>
-                            <h3 class="font-condensed font-800 text-2xl mb-3">Engine Repair</h3>
-                            <p class="text-gray-400">Comprehensive engine diagnostics and repairs by certified technicians.</p>
-                        </div>
-                        
-                        <!-- Service 5 -->
-                        <div class="bg-card-dark rounded-xl p-8 border-t-4 border-brand-red hover:border-red-700 transition-colors">
-                            <div class="text-4xl mb-4">💿</div>
-                            <h3 class="font-condensed font-800 text-2xl mb-3">Alloy Wheel Refurbishment</h3>
-                            <p class="text-gray-400">Restore your alloy wheels to factory condition with our professional refurbishment service.</p>
-                        </div>
-                        
-                        <!-- Service 6 -->
-                        <div class="bg-card-dark rounded-xl p-8 border-t-4 border-brand-red hover:border-red-700 transition-colors">
-                            <div class="text-4xl mb-4">🔧</div>
-                            <h3 class="font-condensed font-800 text-2xl mb-3">General Servicing</h3>
-                            <p class="text-gray-400">Regular maintenance and servicing to keep your vehicle running at peak performance.</p>
-                        </div>
-                    </div>
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-sparkle text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Auto Detailing</h3>
+                    <p class="text-gray-400">Premium detailing services to restore your car's showroom shine.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-cpu text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Engine Diagnostics</h3>
+                    <p class="text-gray-400">Advanced diagnostic tools to identify and fix engine issues quickly.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-battery-charging text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Battery Services</h3>
+                    <p class="text-gray-400">Battery testing, replacement, and charging system diagnostics.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-paint-brush text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Painting</h3>
+                    <p class="text-gray-400">Professional paint matching and flawless finish on all bodywork.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-gear-six text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Transmission</h3>
+                    <p class="text-gray-400">Expert transmission repairs and maintenance services.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-disc text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Brakes</h3>
+                    <p class="text-gray-400">Complete brake system inspection and repair services.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-steering-wheel text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Alloy Wheels</h3>
+                    <p class="text-gray-400">Alloy wheel refurbishment and repair with factory-fresh finish.</p>
+                </div>
+                
+                <div class="card-glow p-6 text-center">
+                    <i class="ph-bold ph-drop text-4xl mb-4" style="color: var(--neon-lime);"></i>
+                    <h3 class="bebas-neue text-2xl text-white mb-2">Oil Change</h3>
+                    <p class="text-gray-400">Quick and professional oil changes using quality lubricants.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- About Section -->
-    <section id="about" class="py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <!-- Image -->
-                <div class="order-2 lg:order-1">
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Image -->
+                <div class="mb-12 lg:mb-0">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" 
-                         alt="Professional mechanic at work" 
-                         class="w-full rounded-2xl shadow-2xl"
-                         loading="lazy">
-                </div>
-                
-                <!-- Content -->
-                <div class="order-1 lg:order-2">
-                    <h2 class="font-condensed font-800 text-4xl sm:text-5xl mb-8">ABOUT REECO'S</h2>
-                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">
-                        For over 10 years, Reeco's Body Shop has been London's trusted partner for premium automotive repair and servicing. We combine cutting-edge technology with traditional craftsmanship to deliver results that exceed expectations.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-brand-red text-xl">✓</span>
-                            <span class="text-lg">Quality Parts & Materials</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-brand-red text-xl">✓</span>
-                            <span class="text-lg">Fast Turnaround Times</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-brand-red text-xl">✓</span>
-                            <span class="text-lg">Free Quotes & Consultations</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Reviews Section -->
-    <section id="reviews" class="py-20 md:py-32 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-condensed font-800 text-4xl sm:text-5xl mb-4">CUSTOMER REVIEWS</h2>
-                <div class="text-2xl mb-2">★★★★★</div>
-                <p class="text-gray-400 text-lg">What our customers say about our service</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div class="bg-card-dark rounded-xl p-8">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center font-condensed font-800 text-lg">JT</div>
-                        <div>
-                            <div class="font-condensed font-700 text-lg">Jordan T.</div>
-                            <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">"Absolutely brilliant service. Had a nasty dent on my BMW and they sorted it like it never happened. Couldn't recommend more."</p>
-                </div>
-                
-                <!-- Review 2 -->
-                <div class="bg-card-dark rounded-xl p-8">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center font-condensed font-800 text-lg">PS</div>
-                        <div>
-                            <div class="font-condensed font-700 text-lg">Priya S.</div>
-                            <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">"Best body shop in NW London, hands down. Fair price, fast work and the car came back looking brand new."</p>
-                </div>
-                
-                <!-- Review 3 -->
-                <div class="bg-card-dark rounded-xl p-8">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center font-condensed font-800 text-lg">MD</div>
-                        <div>
-                            <div class="font-condensed font-700 text-lg">Marcus D.</div>
-                            <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">"Got my alloys refurbished here and they look factory fresh. Great communication, no hidden charges."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Gallery Section -->
-    <section class="py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-condensed font-800 text-4xl sm:text-5xl mb-4">OUR WORK</h2>
-                <p class="text-gray-400 text-lg">Examples of our quality craftsmanship</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=800&q=80" alt="Car detailing" class="w-full h-64 object-cover" loading="lazy">
-                </div>
-                <div class="rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=80" alt="Luxury car" class="w-full h-64 object-cover" loading="lazy">
-                </div>
-                <div class="rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80" alt="Car paint job" class="w-full h-64 object-cover" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- CTA Banner -->
-    <section id="booking" class="bg-brand-red py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-condensed font-800 text-4xl sm:text-5xl mb-8">READY TO BOOK? LET'S GET STARTED.</h2>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <div class="flex items-center gap-3 text-xl">
-                    <span class="text-2xl">📞</span>
-                    <span class="font-condensed font-700 text-2xl">Call Us Today</span>
-                </div>
-                <a href="tel:+442071234567" class="bg-white text-brand-red hover:bg-gray-100 px-8 py-4 rounded font-condensed font-700 text-lg transition-colors">+44 20 7123 4567</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer id="contact" class="bg-gray-900 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Logo & Address -->
-                <div class="lg:col-span-2">
-                    <div class="text-white mb-6">
-                        <div class="font-condensed font-800 text-3xl leading-tight">
-                            REECO'S
-                            <div class="w-full h-0.5 bg-brand-red mt-1 max-w-[120px]"></div>
-                        </div>
-                        <div class="font-condensed font-700 text-xl text-brand-red -mt-1">BODY SHOP</div>
-                    </div>
-                    <div class="text-gray-400 mb-6">
-                        <p class="flex items-center gap-2 mb-2">
-                            <span>📍</span>
-                            150 Coles Green Rd, London NW2 7JL
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h4 class="font-condensed font-800 text-xl mb-4">SERVICES</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">Accident Repair</a></li>
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">Spray Painting</a></li>
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">Auto Detailing</a></li>
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">Engine Repair</a></li>
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">Alloy Wheels</a></li>
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">General Servicing</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h4 class="font-condensed font-800 text-xl mb-4">CONTACT</h4>
-                    <div class="space-y-3 text-gray-400">
-                        <p>📞 +44 20 7123 4567</p>
-                        <p>✉️ info@reecosbodyshop.co.uk</p>
-                        <div class="flex gap-4 mt-4">
-                            <a href="#" class="text-gray-400 hover:text-brand-red transition-colors">Mon-Fri: 8AM-6PM</a>
-                        </div>
-                        <div>Sat: 9AM-4PM</div>
-                        <div>Sun: Closed</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2026 Reeco's Body Shop. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-        
-        // Close mobile menu when clicking links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-    
-</body>
-</html>
+                         alt="Reeco's Body Shop Workshop" 
+                         class="w-full rounded
