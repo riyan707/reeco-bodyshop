@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reeco's Body Shop - London's Graffiti Car Repair</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .bebas {
+            font-family: 'Bebas Neue', cursive;
+        }
+        
+        .spray-text {
+            text-shadow: 4px 4px 0px rgba(212, 245, 0, 0.3), -2px -2px 0px rgba(255, 255, 255, 0.1);
+            filter: drop-shadow(0 0 10px rgba(212, 245, 0, 0.5));
+        }
+        
+        .spray-drip {
+            position: relative;
+        }
+        
+        .spray-drip::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 60%;
+            width: 15px;
+            height: 40px;
+            background: linear-gradient(45deg, rgba(212, 245, 0, 0.8), rgba(184, 242, 0, 0.4));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(15deg);
+            filter: blur(1px);
+        }
+        
+        .neon-accent {
+            color: #d4f500;
+        }
+        
+        .neon-bg {
+            background-color: #d4f500;
+            color: #0a0a0a;
+        }
+        
+        .card-dark {
+            background: linear-gradient(135deg, #111 0%, #151515 100%);
+            border: 1px solid rgba(212, 245, 0, 0.1);
+        }
+        
+        .spray-splatter {
+            position: relative;
+        }
+        
+        .spray-splatter::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: -20px;
+            width: 80px;
+            height: 60px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 245, 0, 0.6) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(212, 245, 0, 0.4) 0%, transparent 30%),
+                radial-gradient(circle at 40% 80%, rgba(212, 245, 0, 0.3) 0%, transparent 25%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            filter: blur(2px);
+            z-index: -1;
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #d4f500 0%, #b8f200 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-4">
+        <div class="text-center max-w-6xl mx-auto">
+            <!-- Logo -->
+            <div class="mb-12 text-center">
+                <svg class="w-96 mx-auto" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g class="spray-splatter">
+                        <text x="200" y="60" text-anchor="middle" class="bebas" font-size="80" fill="white" letter-spacing="2">REECO'S</text>
+                        <text x="200" y="90" text-anchor="middle" class="bebas" font-size="24" fill="#d4f500" letter-spacing="4">BODY SHOP</text>
+                    </g>
+                </svg>
+            </div>
+            
+            <!-- Hero Headline -->
+            <h1 class="bebas spray-drip text-6xl md:text-8xl font-bold mb-8 leading-none spray-text">
+                WE FIX IT.<br>
+                <span class="neon-accent">FLAWLESSLY.</span>
+            </h1>
+            
+            <!-- CTA Button -->
+            <button class="neon-bg px-8 py-4 text-xl font-bold uppercase tracking-wider hover:opacity-80 transition-opacity bebas">
+                BOOK NOW
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="bebas text-4xl md:text-6xl font-bold mb-8 text-center mb-16">
+                WHAT WE <span class="neon-accent">DO</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">🔧</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Vehicle Repair</h3>
+                    <p class="text-gray-300">Professional smash repairs from minor dents to major collision work</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">🚗</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Auto Detailing</h3>
+                    <p class="text-gray-300">Showroom-quality car detailing that makes your ride shine</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">⚙️</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Engine Diagnostics</h3>
+                    <p class="text-gray-300">Advanced diagnostic tools to find and fix engine problems</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">🔋</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Battery Services</h3>
+                    <p class="text-gray-300">Battery replacement and charging system repairs</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">🎨</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Painting</h3>
+                    <p class="text-gray-300">Professional paint jobs with stunning color-match precision</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">⚡</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Transmission</h3>
+                    <p class="text-gray-300">Complete transmission repair and maintenance services</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">🛠</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Brake Services</h3>
+                    <p class="text-gray-300">Brake pad replacement and full brake system repairs</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">✨</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Alloy Wheels</h3>
+                    <p class="text-gray-300">Alloy wheel refurbishment, fixing curb damage and corrosion</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-lg hover:border-yellow-400/30 transition-colors">
+                    <div class="service-icon text-4xl mb-4">🛢️</div>
+                    <h3 class="bebas text-2xl font-bold mb-3">Oil Change</h3>
+                    <p class="text-gray-300">Quick and quality oil changes using premium products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Strip -->
+    <section class="py-20 px-4 bg-gradient-to-r from-black to-linear-radient(135deg, #111 0%, #151515 100%)">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="bebas text-4xl md:text-6xl font-bold mb-8">
+                LONDON'S <span class="neon-accent">GRAFFITI</span> SERVICE STATION
+            </h2>
+            <p class="text-xl text-gray-300 leading-relaxed md:text-2xl">
+                We don't just repair cars — we bring them back to life with street-level passion and garage-grade precision. 
+                Every vehicle gets the same attention to detail as the finest piece of London street art. 
+                From bodywork to transmission, we spray it, fix it, and make it proper.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="bebas text-4xl md:text-6xl font-bold mb-8">
+                READY TO GET YOUR <span class="neon-accent">CAR SORTED?</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <span class="text-2xl font-bold neon-accent">📞 +44 20 1234 5678</span>
+                <button class="neon-bg px-8 py-4 text-xl font-bold uppercase tracking-wider hover:opacity-80 transition-opacity bebas">
+                    BOOK NOW
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="bebas text-2xl font-bold mb-4 neon-accent">Reeco's Body Shop</h3>
+                    <p class="text-gray-300">150 Coles Green Rd, London NW2 7JL</p>
+                    <p class="text-gray-300">London's premier graffiti-styled body shop</p>
+                </div>
+                <div>
+                    <h3 class="bebas text-xl font-bold mb-4">Services</h3>
+                    <ul class="text-gray-300 space-y-1">
+                        <li>Vehicle Repair</li>
+                        <li>Auto Detailing</li>
+                        <li>Engine Diagnostics</li>
+                        <li>Painting & Finishing</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="bebas text-xl font-bold mb-4">Contact</h3>
+                    <ul class="text-gray-300 space-y-1">
+                        <li>+44 20 1234 5678</li>
+                        <li>info@reecosbodyshop.co.uk</li>
+                        <li>Mon-Fri: 8am-6pm</li>
+                        <li>Sat-Sun: 9am-4pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 Reeco's Body Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
